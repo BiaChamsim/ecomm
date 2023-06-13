@@ -9,7 +9,7 @@ db.createCollection("orders", {
             "additionalProperties": false,
             "properties":{
                 "_id": {
-                    "description": "category identifier",
+                    "description": "order identifier",
                     "bsonType": "objectId"
                 },
                 "dataPedido": {
