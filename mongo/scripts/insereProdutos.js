@@ -100,7 +100,7 @@ const products = [
     {
         "nome": "Cama queen size",
         "descricao": "Cama Queen Size Dener Oppa Design - Mel",
-        "slug": "",
+        "slug": "cama-queen-size-dener",
         "preco": NumberDecimal(3100),
         "estoque": 2,
         "categoria": "MÓVEIS"
