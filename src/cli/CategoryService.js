@@ -13,15 +13,42 @@ class CategoryService{
         console.log(await categoryById.json())
     }
 
-    static async createCategory(){
-        //parametros read file: 
-        //1: caminho do arquivo
-        //2: encoding (utf-8)
-        //3: arrow function resultado do readfile
+    static async createCategory(category){
+        const encoding = "utf-8";
+        const categoryBody = await fs.promises.readFile(category, encoding);
 
-        fs.readFile(newCategory, encoding, (error, category)=>{
-            console.log(category)
+        const response = await fetch('http://localhost:3000/categories', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: categoryBody
         })
+        console.log(`Response status: ${response.status}`, await response.json())
+    }
+    static async updateCategory(id, category){
+        const encoding = "utf-8";
+        const updateCategory = await fs.promises.readFile(category, encoding);
+
+        const response = await fetch(`http://localhost:3000/categories/${id}`, {
+            method: "PUT",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: updateCategory
+        })
+        console.log(`Response status: ${response.status},`, await response.json())
+
+    }
+    static async deleteCategory(id){
+
+        const response = await fetch(`http://localhost:3000/categories/${id}`, {
+            method: "DELETE"
+        })
+
+        console.log(`Response status: ${response.status}`, await response.json())
     }
 }
 
